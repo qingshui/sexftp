@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.sexftp.core.bean.LanguageConf>
+  <defaultLang></defaultLang>
+  <languageItem>
+    <key>New Sexftp Upload Unit</key>
+    <enus>New Sexftp Upload Unit</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Edit Sexftp Upload Unit</key>
+    <enus>Edit Sexftp Upload Unit</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Remove Sexftp Upload Unit</key>
+    <enus>Remove Sexftp Upload Unit</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Format Local File Upload Point(%s)</key>
+    <enus>Format Local File Upload Point(%s)</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>View Or Upload Local New Modified Files(%s)</key>
+    <enus>View Or Upload Local New Modified Files(%s)</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Location To(%s)</key>
+    <enus>Location To(%s)</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>View Or Upload Files Witch Different From Server(%s)</key>
+    <enus>View Or Upload Files Witch Different From Server(%s)</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Upload To Server(%s)</key>
+    <enus>Upload To Server(%s)</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Download From Server(%s)</key>
+    <enus>Download From Server(%s)</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>View Or Edit ServerSide File(%s)</key>
+    <enus>View Or Edit ServerSide File(%s)</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>View Or Edit LocalSide File(%s)</key>
+    <enus>View Or Edit LocalSide File(%s)</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Disconnect All Connections(%s)</key>
+    <enus>Disconnect All Connections(%s)</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Open Server Viewer(%s)</key>
+    <enus>Open Server Viewer(%s)</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Compare (%s)</key>
+    <enus>Compare (%s)</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Location To Local Viewer(%s)</key>
+    <enus>Location To Local Viewer(%s)</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Refresh And Reload Sexftp Config Files(%s)</key>
+    <enus>Refresh And Reload Sexftp Config Files(%s)</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Refresh Files And Folders(%s)</key>
+    <enus>Refresh Files And Folders(%s)</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Copy</key>
+    <enus>Copy</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Copy Qualified Name</key>
+    <enus>Copy Qualified Name</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Copy Cient File/Folder Path(%s)</key>
+    <enus>Copy Cient File/Folder Path(%s)</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Copy Server File/Folder Path(%s)</key>
+    <enus>Copy Server File/Folder Path(%s)</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Open In Explorer</key>
+    <enus>Open In Explorer</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Collapse All</key>
+    <enus>Collapse All</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Expand All</key>
+    <enus>Expand All</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Compare With Server(%s)</key>
+    <enus>Compare With Server(%s)</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Folder</key>
+    <enus>Folder</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>File association</key>
+    <enus>File association</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>File Encoding</key>
+    <enus>File Encoding</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>File New Encoding</key>
+    <enus>File New Encoding</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Description</key>
+    <enus>Description</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Samples</key>
+    <enus>Samples</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Chose Your Folder (%s)</key>
+    <enus>Chose Your Folder (%s)</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Apply Changes(%s)</key>
+    <enus>Apply Changes(%s)</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Confirm File Associations</key>
+    <enus>Confirm File Associations</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Location To</key>
+    <enus>Location To</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Location To File Or Folder In Sexftp Viewer&#xd;
+Full Path:Precise Location&#xd;
+File Name:Only Find In Expanded Tree Node</key>
+    <enus>Location To File Or Folder In Sexftp Viewer&#xd;
+Full Path:Precise Location&#xd;
+File Name:Only Find In Expanded Tree Node</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Generate Sexftp Upload Unit Config File</key>
+    <enus>Generate Sexftp Upload Unit Config File</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Help You Generate Sexftp Upload Unit Config File Based Xml.After Save The XML File,&#xd;
+The Sexftp Upload Unit Config Will Show In [%s] and [%s]</key>
+    <enus>Help You Generate Sexftp Upload Unit Config File Based Xml.After Save The XML File,&#xd;
+The Sexftp Upload Unit Config Will Show In [%s] and [%s]</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>From FileZilla</key>
+    <enus>From FileZilla</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Import From</key>
+    <enus>Import From</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key></key>
+    <enus></enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Config File Name</key>
+    <enus>Config File Name</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Server Host</key>
+    <enus>Server Host</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Server Port</key>
+    <enus>Server Port</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>FTP Transfer Protocal</key>
+    <enus>FTP Transfer Protocal</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Implicit TLS/SSL FTP</key>
+    <enus>Implicit TLS/SSL FTP</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Explicit TLS/SSL FTP</key>
+    <enus>Explicit TLS/SSL FTP</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>SSH File Transfer Protocal</key>
+    <enus>SSH File Transfer Protocal</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Local File Transfer Protocal</key>
+    <enus>Local File Transfer Protocal</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Server Type</key>
+    <enus>Server Type</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Login User</key>
+    <enus>Login User</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Login User Name</key>
+    <enus>Login User Name</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Login Password</key>
+    <enus>Login Password</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Work In Sexftp World</key>
+    <enus>Work In Sexftp World</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Compare With Local(%s)</key>
+    <enus>Compare With Local(%s)</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Sexftp Messsage</key>
+    <enus>Sexftp Messsage</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>We&apos;ll Generate Sexftp Upload Unit XML Config File .&#xd;
+You May Need Fulfill The XML Config File&#xd;
+After Save The XML File,&#xd;
+The Sexftp Upload Unit Config Will Show In &#xd;
+[%s] and [%s]&#xd;
+And Then You Can Use It.&#xd;
+If You Don&apos;t Save,The Sexftp Upload Unit Config File Will Be Deleted.</key>
+    <enus>We&apos;ll Generate Sexftp Upload Unit XML Config File .&#xd;
+You May Need Fulfill The XML Config File&#xd;
+After Save The XML File,&#xd;
+The Sexftp Upload Unit Config Will Show In &#xd;
+[%s] and [%s]&#xd;
+And Then You Can Use It.&#xd;
+If You Don&apos;t Save,The Sexftp Upload Unit Config File Will Be Deleted.</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Support [%s]</key>
+    <enus>Support [%s]</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Client Root Folder Or File Path</key>
+    <enus>Client Root Folder Or File Path</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Server Root Folder Path</key>
+    <enus>Server Root Folder Path</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Exclude Path,? = any character,* = any string</key>
+    <enus>Exclude Path,? = any character,* = any string</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Include Path,? = any character,* = any string</key>
+    <enus>Include Path,? = any character,* = any string</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Save Sexftp Upload Unit Config And Load In Sexftp Viewer(%s)</key>
+    <enus>Save Sexftp Upload Unit Config And Load In Sexftp Viewer(%s)</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Sexftp Error</key>
+    <enus>Sexftp Error</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>[%s] Must End With &apos;/&apos;</key>
+    <enus>[%s] Must End With &apos;/&apos;</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Upload To:[%s]</key>
+    <enus>Upload To:[%s]</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Confirm To Upload These [%s] Files:</key>
+    <enus>Confirm To Upload These [%s] Files:</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>The Result Will Show In [%s]</key>
+    <enus>The Result Will Show In [%s]</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Sexftp Question</key>
+    <enus>Sexftp Question</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>This Operation Will Compare Data With Server,It&apos;s May Take a Long Time,Sure?&#xd;
+We Suggest You To Use &lt;View Or Upload Local New Modified Files&gt;,It&apos;s Only Compare With Last File Upload Point At Local.</key>
+    <enus>This Operation Will Compare Data With Server,It&apos;s May Take a Long Time,Sure?&#xd;
+We Suggest You To Use &lt;View Or Upload Local New Modified Files&gt;,It&apos;s Only Compare With Last File Upload Point At Local.</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>After Format,New Modify Checking Will Based On this Result!Sure?</key>
+    <enus>After Format,New Modify Checking Will Based On this Result!Sure?</enus>
+    <zhcn></zhcn>
+  </languageItem>
+</org.sexftp.core.bean.LanguageConf>

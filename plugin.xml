@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Sexftp Category"
+            id="sexftp">
+      </category>
+      <view
+            name="Sexftp Local"
+            icon="icons/Twitter_bird.ico"
+            category="sexftp"
+            class="sexftp.views.SexftpLocalView"
+            id="sexftp.views.MainView">
+      </view>
+      <view
+            name="Sexftp Server"
+            icon="icons/repository_rep.gif"
+            category="sexftp"
+            class="sexftp.views.SexftpServerView"
+            id="sexftp.views.ServerView">
+      </view>
+      <view
+            category="sexftp"
+            class="sexftp.views.SexftpSyncView"
+            icon="icons/compare.gif"
+            id="sexftp.views.SexftpSyncView"
+            name="Sexftp Synchronize">
+      </view>
+     
+      <view
+            category="sexftp"
+            class="sexftp.views.SexftpEncodView"
+            icon="icons/Orange_forum.ico"
+            id="sexftp.views.SexftpEncodView"
+            name="Sexftp Charset Encoder">
+      </view>
+    
+      
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.console.ConsoleView"
+               relationship="stack"
+               id="sexftp.views.MainView">
+         </view>
+      </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               id="sexftp.views.SexftpSyncView"
+               ratio="0.5"
+               relationship="stack"
+               relative="sexftp.views.MainView"
+               visible="false">
+         </view>
+      </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               id="sexftp.views.ServerView"
+               ratio="0.5"
+               relationship="stack"
+               relative="sexftp.views.MainView"
+               visible="true">
+         </view>
+      </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               id="sexftp.views.SexftpEncodView"
+               ratio="0.5"
+               relationship="stack"
+               relative="sexftp.views.MainView"
+               visible="false">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml" >
+      </contexts>
+      <contexts
+            file="contexts.xml">
+      </contexts>
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="sexftp.editors.XMLEditor"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            extensions="xml"
+            icon="icons/Duckling.ico"
+            id="sexftp.editors.XMLEditor"
+            name="Sexftp Config File Editor">
+      </editor>
+      <editor
+            class="sexftp.editors.inner.SfTextEditor"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            extensions="txt"
+            
+            icon="icons/Duckling.ico"
+            id="sexftp.editors.inner.SfTextEditor"
+            name="Sexftp Inner Text Editor">
+             
+            
+      </editor>
+      <editor
+            class="sexftp.editors.inner.SexftpCompareEditor"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            extensions="sftp"
+            
+            icon="icons/Duckling.ico"
+            id="sexftp.editors.inner.SexftpCompareEditor"
+            name="SexftpCompareEditor">
+             
+            
+      </editor>
+      
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+         <perspective
+        name="Sexftp"
+        icon="icons/Twitter_bird.ico"
+        class="sexftp.perspective.SexftpPerspective"
+        id="sexftp.perspective.SexftpPerspective">
+  		</perspective>
+         
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="sexftp.contribution1"
+            objectClass="java.lang.Object">
+         <menu
+               id="sexftp.mainpop.menu"
+               label="Sexftp World"
+               icon="icons/Twitter_bird.ico"
+               path="additions">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               class="sexftp.popup.actions.SexftpSubmenuAction"
+               icon="icons/Twitter_bird.ico"
+               enablesFor="1"
+               id="sexftp.popMainAction"
+               label="Work In Sexftp World"
+               menubarPath="sexftp.mainpop.menu">
+         </action>
+         <!-- 
+         <action
+               class="sexftp.popup.actions.SexftpSubmenuAction"
+               icon="icons/repository_rep.gif"
+               enablesFor="1"
+               id="sexftp.actionDirectSServer"
+               label="Open Server Viewer(&amp;S)"
+               menubarPath="sexftp.mainpop.menu/group1">
+         </action>
+         <action
+               class="sexftp.popup.actions.SexftpSubmenuAction"
+               icon="icons/Follow me.ico"
+               enablesFor="1"
+               id="sexftp.popMainAction"
+               label="Location To Local Viewer(&amp;L)"
+               menubarPath="sexftp.mainpop.menu/group1">
+         </action>
+         
+         
+         <action
+               class="sexftp.popup.actions.SexftpSubmenuAction"
+               
+               enablesFor="+"
+               id="sexftp.actionDeleteSexFtpConf"
+               label="Remove Sexftp Upload Unit"
+               menubarPath="sexftp.mainpop.menu/group2">
+         </action>
+         <action
+               class="sexftp.popup.actions.SexftpSubmenuAction"
+               icon="icons/gif-0708.gif"
+               enablesFor="+"
+               id="sexftp.actionEditSexFtpConf"
+               label="Edit Sexftp Upload Unit"
+               menubarPath="sexftp.mainpop.menu/group2">
+         </action>
+         <action
+               class="sexftp.popup.actions.SexftpSubmenuAction"
+               icon="icons/gif-0108.gif"
+               enablesFor="+"
+               id="sexftp.actionApplySexFtpConf"
+               label="New Sexftp Upload Unit"
+               menubarPath="sexftp.mainpop.menu/group2">
+         </action>
+         
+         <action
+               class="sexftp.popup.actions.SexftpSubmenuAction"
+               icon="icons/synch_synch.gif"
+               enablesFor="+"
+               id="sexftp.actionPrepareServUpload"
+               label="View Or Upload Files Witch Different From Server(&amp;A)"
+               menubarPath="sexftp.mainpop.menu/group3">
+         </action>
+         <action
+               class="sexftp.popup.actions.SexftpSubmenuAction"
+               icon="icons/compare_view.gif"
+               enablesFor="+"
+               id="sexftp.actionPrepareUpload"
+               label="View Or Upload Local New Modified Files(&amp;M)"
+               menubarPath="sexftp.mainpop.menu/group3">
+         </action>
+         <action
+               class="sexftp.popup.actions.SexftpSubmenuAction"
+               icon="icons/xhrmon.gif"
+               enablesFor="+"
+               id="sexftp.actionFormat"
+               label="Format Local File Upload Point(&amp;F)"
+               menubarPath="sexftp.mainpop.menu/group3">
+         </action>
+         
+         
+         <action
+               class="sexftp.popup.actions.SexftpSubmenuAction"
+               icon="icons/compare.gif"
+               enablesFor="+"
+               id="sexftp.actionCompare"
+               label="Compare With Server(&amp;C)"
+               menubarPath="sexftp.mainpop.menu/group4">
+         </action>
+         <action
+               class="sexftp.popup.actions.SexftpSubmenuAction"
+               icon="icons/history_view.gif"
+               enablesFor="+"
+               id="sexftp.actionEdit"
+               label="View Or Edit ServerSide File(&amp;E)"
+               menubarPath="sexftp.mainpop.menu/group4">
+         </action>
+         <action
+               class="sexftp.popup.actions.SexftpSubmenuAction"
+               icon="icons/next_nav.gif"
+               enablesFor="+"
+               id="sexftp.actionDownload"
+               label="Download From Server(&amp;D)"
+               menubarPath="sexftp.mainpop.menu/group4">
+         </action>
+         <action
+               class="sexftp.popup.actions.SexftpSubmenuAction"
+               icon="icons/prev_nav.gif"
+               enablesFor="+"
+               id="sexftp.actionUpload"
+               label="Upload To Server(&amp;U)"
+               menubarPath="sexftp.mainpop.menu/group4">
+         </action>
+         -->
+         
+         <visibility> 
+         	<or>
+	         <objectClass name="org.eclipse.jdt.core.IOpenable"/>  
+		     <objectClass name="org.eclipse.core.resources.IFile"/>  
+		     <objectClass name="org.eclipse.core.resources.IFolder"/>  
+		     <!-- <objectClass name="org.eclipse.ui.part.FileEditorInput"/> -->  
+		    </or>
+      	</visibility> 
+         
+      </objectContribution>
+      <objectContribution
+            id="sexftp.contribution2"
+            objectClass="java.lang.Object">
+         <menu
+               id="sexftp.mainpop.corcodmenu"
+               label="corcodSubmenu"
+               path="additions">
+            <separator
+                  name="group2">
+            </separator>
+         </menu>
+         <action
+               class="sexftp.popup.actions.CorcodSubmenuAction"
+               icon="icons/Orange_forum.ico"
+               enablesFor="1"
+               id="sexftp.corcodMainAction"
+               label="Sexftp Charset Encoder"
+               menubarPath="sexftp.mainpop.corcodmenu">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="sexftp.actionSet"
+            label="Sexftp Main"
+            visible="true">
+         <menu
+               id="sexftpMainMenu"
+               label="Sexftp">
+            <separator
+                  name="sexftpMainGroup">
+            </separator>
+         </menu>
+         <action
+               class="sexftp.mainbar.actions.SexftpMainAction"
+               icon="icons/Twitter_bird.ico"
+               id="sexftp.mainbar.actions.SexftpMainAction"
+               label="&amp;Work In Sexftp World"
+               menubarPath="sexftpMainMenu/sexftpMainGroup"
+               toolbarPath="sexftpMainGroup"
+               tooltip="Work In Sexftp world">
+         </action>
+      </actionSet>
+   </extension>
+  	<extension point="org.eclipse.core.runtime.contentTypes">
+    <!-- declares a content type for Java Properties files -->
+    <content-type id="sexftpInnerGbk" name="sexftpInnerGbk" 
+        base-type="org.eclipse.core.runtime.text"
+        priority="high"                
+        file-extensions="sfGBK,sfGB2312,sfGB18030"
+        default-charset="GBK"/>
+     <content-type id="sexftpInnerUTF8" name="sexftpInnerUTF8" 
+        base-type="org.eclipse.core.runtime.text"
+        priority="high"                
+        file-extensions="sfUTF-8"
+        default-charset="UTF-8"/>
+     <content-type id="sexftpInnerISO-8859-1" name="sexftpInnerISO-8859-1" 
+        base-type="org.eclipse.core.runtime.text"
+        priority="high"                
+        file-extensions="sfISO-8859-1"
+        default-charset="ISO-8859-1"/>
+     <content-type id="sexftpInnerUTF-16BE" name="sexftpInnerUTF-16BE" 
+        base-type="org.eclipse.core.runtime.text"
+        priority="high"                
+        file-extensions="sfUTF-16BE"
+        default-charset="UTF-16BE"/>
+    <content-type id="sexftpInnerUTF-16LE" name="sexftpInnerUTF-16LE" 
+        base-type="org.eclipse.core.runtime.text"
+        priority="high"                
+        file-extensions="sfUTF-16LE"
+        default-charset="UTF-16LE"/>
+    <content-type id="sexftpInnerUTF-16" name="sexftpInnerUTF-16" 
+        base-type="org.eclipse.core.runtime.text"
+        priority="high"                
+        file-extensions="sfUTF-16"
+        default-charset="UTF-16"/>
+</extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="sexftp.preferences.SexftpPreferencePage"
+            id="sexftp.preferences.SexftpPreferencePage"
+            name="Sexftp">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="sexftp.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="sexftp.startup.StartUp">
+      </startup>
+   </extension>
+   
+
+</plugin>
