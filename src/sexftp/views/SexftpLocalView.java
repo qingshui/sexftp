@@ -964,7 +964,6 @@ public class SexftpLocalView extends SexftpMainView {
 		});
 		new Thread(new SexftpRun(this) {
 			public void srun() throws Exception {
-				Thread.sleep(100L);
 				Display.getDefault().asyncExec(new SexftpRun(SexftpLocalView.this) {
 					public void srun() throws Exception {
 						if (serchto != null) {
@@ -1015,7 +1014,7 @@ public class SexftpLocalView extends SexftpMainView {
 		});
 		new Thread(new SexftpRun(this) {
 			public void srun() throws Exception {
-				Thread.sleep(100L);
+				//Thread.sleep(100L);
 				Display.getDefault().asyncExec(new SexftpRun(SexftpLocalView.this) {
 					public void srun() throws Exception {
 						if (serchto != null) {

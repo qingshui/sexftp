@@ -160,7 +160,8 @@
                label="Work In Sexftp World"
                menubarPath="sexftp.mainpop.menu">
          </action>
-         <!-- 
+         
+         <!-- -->
          <action
                class="sexftp.popup.actions.SexftpSubmenuAction"
                icon="icons/repository_rep.gif"
@@ -173,15 +174,14 @@
                class="sexftp.popup.actions.SexftpSubmenuAction"
                icon="icons/Follow me.ico"
                enablesFor="1"
-               id="sexftp.popMainAction"
+               id="sexftp.actionLocalEdit"
                label="Location To Local Viewer(&amp;L)"
                menubarPath="sexftp.mainpop.menu/group1">
          </action>
          
-         
+         <!--
          <action
                class="sexftp.popup.actions.SexftpSubmenuAction"
-               
                enablesFor="+"
                id="sexftp.actionDeleteSexFtpConf"
                label="Remove Sexftp Upload Unit"
@@ -203,6 +203,7 @@
                label="New Sexftp Upload Unit"
                menubarPath="sexftp.mainpop.menu/group2">
          </action>
+         -->
          
          <action
                class="sexftp.popup.actions.SexftpSubmenuAction"
@@ -228,8 +229,6 @@
                label="Format Local File Upload Point(&amp;F)"
                menubarPath="sexftp.mainpop.menu/group3">
          </action>
-         
-         
          <action
                class="sexftp.popup.actions.SexftpSubmenuAction"
                icon="icons/compare.gif"
@@ -262,17 +261,16 @@
                label="Upload To Server(&amp;U)"
                menubarPath="sexftp.mainpop.menu/group4">
          </action>
-         -->
-         
+         <!-- -->
+         <!--
          <visibility> 
          	<or>
-	         <objectClass name="org.eclipse.jdt.core.IOpenable"/>  
+	         <objectClass name="org.eclipse.jdt.core.IOpenable"/>
 		     <objectClass name="org.eclipse.core.resources.IFile"/>  
 		     <objectClass name="org.eclipse.core.resources.IFolder"/>  
-		     <!-- <objectClass name="org.eclipse.ui.part.FileEditorInput"/> -->  
 		    </or>
       	</visibility> 
-         
+         -->
       </objectContribution>
       <objectContribution
             id="sexftp.contribution2"
