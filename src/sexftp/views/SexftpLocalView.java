@@ -99,7 +99,8 @@ public class SexftpLocalView extends SexftpMainView {
 					selectFtpUploadConfNodes[i] = newtp;
 				}
 
-				Map<?, ?> lastModMap = FtpUtil.readLastModMap(SexftpLocalView.workspacePath + ".work/" + ftpconf.getName());
+				Map<?, ?> lastModMap = FtpUtil
+						.readLastModMap(SexftpLocalView.workspacePath + ".work/" + ftpconf.getName());
 				final List<FtpUploadPro> difList = new ArrayList<FtpUploadPro>();
 				final List<FtpUploadPro> notExistList = new ArrayList<FtpUploadPro>();
 				for (Object o : os) {
@@ -143,8 +144,8 @@ public class SexftpLocalView extends SexftpMainView {
 							SexftpLocalView.this.showMessage("The Result Will Show In [Sexftp Synchronize View]");
 						}
 						SexftpSyncView syncView = PluginUtil.findAndShowSyncView(SexftpLocalView.this.activePage);
-						syncView.showDifView(selectFtpUploadConfNodes,
-								SexftpLocalView.this.anyaCustomizedImgMap(new ArrayList<FtpUploadPro>(), difList, notExistList));
+						syncView.showDifView(selectFtpUploadConfNodes, SexftpLocalView.this
+								.anyaCustomizedImgMap(new ArrayList<FtpUploadPro>(), difList, notExistList));
 					}
 				});
 				return Status.OK_STATUS;
@@ -390,8 +391,8 @@ public class SexftpLocalView extends SexftpMainView {
 	}
 
 	public void innerPrepareServUpload_actionPerformed(final Object[] selectOs,
-			final AbstractSexftpView.TreeParent[] selectFtpUploadConfNodes, final FtpConf ftpconf, final IWorkbenchPage activePage)
-			throws Exception {
+			final AbstractSexftpView.TreeParent[] selectFtpUploadConfNodes, final FtpConf ftpconf,
+			final IWorkbenchPage activePage) throws Exception {
 		if (!showQuestion(
 				"This Operation Will Compare Data With Server,It's May Take a Long Time,Sure?\r\nWe Suggest You To Use <View Or Upload Local New Modified Files>,It's Only Compare With Last File Upload Point At Local.")) {
 			return;
@@ -911,18 +912,84 @@ public class SexftpLocalView extends SexftpMainView {
 					String client = new File(((FtpUploadConf) o.getO()).getClientPath()).getAbsolutePath();
 					if (expandClientPath.startsWith(client)) {
 						((AbstractSexftpView.TreeParent) o).getChildren();
-
 						SexftpLocalView.this.addChildUploadPro((AbstractSexftpView.TreeParent) o, null, true,
 								new File(expandClientPath).getAbsolutePath());
-
 						SexftpLocalView.this.directExpand(expandClientPath, o);
-
-						throw new AbortException();
 					}
 				}
 				return new TreeViewUtil.ThisYourFind(false, true);
 			}
 		});
+	}
+
+	public void directToAction(final String expandClientPath, final String actionName) {
+		AbstractSexftpView.TreeParent r = getRoot();
+		TreeViewUtil.serchTreeData(r, new SearchCallback() {
+			public TreeViewUtil.ThisYourFind isThisYourFind(AbstractSexftpView.TreeObject o) {
+				if (o.getO() instanceof FtpUploadConf) {
+					String client = new File(((FtpUploadConf) o.getO()).getClientPath()).getAbsolutePath();
+					if (expandClientPath.startsWith(client)) {
+						((AbstractSexftpView.TreeParent) o).getChildren();
+						SexftpLocalView.this.addChildUploadPro((AbstractSexftpView.TreeParent) o, null, true,
+								new File(expandClientPath).getAbsolutePath());
+						SexftpLocalView.this.directExpandAction(expandClientPath, o, actionName);
+					}
+				}
+				return new TreeViewUtil.ThisYourFind(false, true);
+			}
+		});
+	}
+
+	private void directExpandAction(final String explandClientPath, final AbstractSexftpView.TreeObject to,
+			final String actionName) {
+		final AbstractSexftpView.TreeObject serchto = TreeViewUtil.serchTreeData(to, new SearchCallback() {
+			public TreeViewUtil.ThisYourFind isThisYourFind(AbstractSexftpView.TreeObject newo) {
+				if (newo.getO() instanceof FtpUploadPro) {
+					String sclient = ((FtpUploadPro) newo.getO()).getFtpUploadConf().getClientPath();
+					String dclient = explandClientPath;
+					sclient = new File(sclient).getAbsolutePath();
+					dclient = new File(dclient).getAbsolutePath();
+					if (sclient.equals(dclient)) {
+						return new TreeViewUtil.ThisYourFind(true, false);
+					}
+					if (!dclient.startsWith(sclient)) {
+						return new TreeViewUtil.ThisYourFind(false, false);
+					}
+
+					return new TreeViewUtil.ThisYourFind(false, true);
+				}
+
+				return new TreeViewUtil.ThisYourFind(false, true);
+			}
+		});
+		new Thread(new SexftpRun(this) {
+			public void srun() throws Exception {
+				Thread.sleep(100L);
+				Display.getDefault().asyncExec(new SexftpRun(SexftpLocalView.this) {
+					public void srun() throws Exception {
+						if (serchto != null) {
+							SexftpLocalView.this.viewer.refresh();
+							TreePath tpath = TreeViewUtil.changeTreePath(serchto);
+							TreeSelection t = new TreeSelection(tpath);
+							SexftpLocalView.this.viewer.setSelection(t);
+							SexftpLocalView.this.console("Direct To Ok:" + serchto);
+						} else {
+							TreePath tpath = TreeViewUtil.changeTreePath(to);
+							TreeSelection t = new TreeSelection(tpath);
+							SexftpLocalView.this.viewer.setSelection(t);
+						}
+
+						try {
+							// SexftpLocalView.this.actionUpload_actionPerformed();
+							SexftpLocalView.this.getClass().getDeclaredMethod(actionName).invoke(SexftpLocalView.this);
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		}).start();
 	}
 
 	private void directExpand(final String explandClientPath, final AbstractSexftpView.TreeObject to) {

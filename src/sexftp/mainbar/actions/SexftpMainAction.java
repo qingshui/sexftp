@@ -32,7 +32,20 @@ public class SexftpMainAction implements IWorkbenchWindowActionDelegate, IObject
 		SexftpMainView mainView = (SexftpMainView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 				.findView("sexftp.views.MainView");
 		try {
-			mainView.directTo(file.getLocation().toFile().getAbsolutePath(), null);
+			//mainView.directTo(file.getLocation().toFile().getAbsolutePath(), null);
+			String sid = action.getId();
+			if ( sid == "sexftp.popMainAction" ) {
+				mainView.directTo(file.getLocation().toFile().getAbsolutePath(), null);
+			} else {
+				int pos = sid.indexOf(".");
+				if ( pos <= 0 ) {
+					LogUtil.info("id:" + sid);
+					return;
+				}
+				String actionName = sid.substring(pos+1) + "_actionPerformed";
+				System.out.println("action " + actionName);
+				mainView.directToAction(file.getLocation().toFile().getAbsolutePath(), actionName);
+			}
 		} catch (AbortException e) {
 			LogUtil.info("abort:" + e.getMessage());
 		}
@@ -52,7 +65,6 @@ public class SexftpMainAction implements IWorkbenchWindowActionDelegate, IObject
 						.invoke(treeSelect.getFirstElement(), new Object[0]));
 			} catch (Exception localException2) {
 			}
-
 		}
 	}
 

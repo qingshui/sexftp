@@ -2,10 +2,12 @@ package sexftp.popup.actions;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 //import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPart;
+
 import sexftp.mainbar.actions.SexftpMainAction;
 import sexftp.uils.LangUtil;
 
@@ -33,5 +35,6 @@ public class SexftpSubmenuAction extends SexftpMainAction {
 			action.setText(viewText);
 		}
 		super.selectionChanged(action, selection);
+		//System.out.println("id " + id + ", lable " + lable);
 	}
 }

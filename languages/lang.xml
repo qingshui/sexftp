@@ -376,4 +376,28 @@ We Suggest You To Use &lt;View Or Upload Local New Modified Files&gt;,It&apos;s 
     <enus>After Format,New Modify Checking Will Based On this Result!Sure?</enus>
     <zhcn></zhcn>
   </languageItem>
+  <languageItem>
+    <key>Nothing For Upload,You Can Try Thes Options Before as :&#xd;
+Prepare Modified Files  For Upload&#xd;
+Prepare All Files For Upload</key>
+    <enus>Nothing For Upload,You Can Try Thes Options Before as :&#xd;
+Prepare Modified Files  For Upload&#xd;
+Prepare All Files For Upload</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>No Different Or Modified Files With The Status Of Last Format Or Upload!</key>
+    <enus>No Different Or Modified Files With The Status Of Last Format Or Upload!</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>No Different Or Modified Files With Server!</key>
+    <enus>No Different Or Modified Files With Server!</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>[%s] Not Exists On Server!</key>
+    <enus>[%s] Not Exists On Server!</enus>
+    <zhcn></zhcn>
+  </languageItem>
 </org.sexftp.core.bean.LanguageConf>

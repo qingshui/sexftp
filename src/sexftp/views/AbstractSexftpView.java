@@ -983,9 +983,12 @@ public class AbstractSexftpView extends ViewPart implements Consoleable, SrcView
 		});
 	}
 
-	public void directTo(String expandPath, Integer ftpUploadTreeNodesIndex) {
+	public void directTo(final String expandPath, final Integer ftpUploadTreeNodesIndex) {
 	}
-
+	
+	public void directToAction(final String expandClientPath, final String actionName) {
+	}
+	
 	public TreeViewer getViewer() {
 		return this.viewer;
 	}
