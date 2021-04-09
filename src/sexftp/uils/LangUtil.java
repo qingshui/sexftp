@@ -1,6 +1,5 @@
 package sexftp.uils;
 
-import com.thoughtworks.xstream.XStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -17,12 +16,6 @@ public class LangUtil {
 	private static LanguageConf langconf = null;
 	private static String langfile = null;
 	private static String plugPath = null;
-	private static XStream xstream = new XStream();
-
-	static {
-		xstream.addImplicitCollection(LanguageConf.class, "langList");
-		xstream.alias("languageItem", LanguageItem.class);
-	}
 
 	@SuppressWarnings("deprecation")
 	public static String langText(String text) {
@@ -33,8 +26,7 @@ public class LangUtil {
 				plugPath = Platform.asLocalURL(Platform.getBundle("sexftp").getEntry("")).getFile();
 				langfile = plugPath + "/languages/lang.xml";
 				if (new File(langfile).exists()) {
-					String xml = FileUtil.getTextFromFile(langfile, "utf-8");
-					langconf = (LanguageConf) xstream.fromXML(xml);
+					langconf = LanguageConf.fromXML(langfile);
 				} else {
 					langconf = new LanguageConf();
 				}
@@ -58,7 +50,7 @@ public class LangUtil {
 			}
 			langconf.setLangList(new ArrayList<LanguageItem>(lMap.values()));
 
-			String newXml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n" + xstream.toXML(langconf);
+			String newXml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n" + langconf.toXML();
 			langconf.setLangMap(langMap);
 			try {
 				FileUtil.writeByte2File(langfile, newXml.getBytes("utf-8"));

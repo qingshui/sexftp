@@ -1249,7 +1249,7 @@ public class AbstractSexftpView extends ViewPart implements Consoleable, SrcView
 			}
 
 			if (sexFtpIcon != null) {
-				System.out.println(sexFtpIcon);
+//				System.out.println(sexFtpIcon);
 				return AbstractUIPlugin.imageDescriptorFromPlugin("sexftp", "/icons/" + sexFtpIcon).createImage();
 			}
 			return PlatformUI.getWorkbench().getSharedImages().getImage(imageKey);

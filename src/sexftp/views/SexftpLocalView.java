@@ -1,6 +1,5 @@
 package sexftp.views;
 
-import com.thoughtworks.xstream.XStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.nio.charset.Charset;
@@ -543,8 +542,7 @@ public class SexftpLocalView extends SexftpMainView {
 		FtpUploadPro upro = (FtpUploadPro) selectO[0];
 		FtpFile ftfile = new FtpFile(new File(upro.getFtpUploadConf().getClientPath()).getName(), false, 0L,
 				Calendar.getInstance());
-		XStream xstream = new XStream();
-		FtpUploadConf up = (FtpUploadConf) xstream.fromXML(xstream.toXML(upro.getFtpUploadConf()));
+		FtpUploadConf up = (FtpUploadConf) StringUtil.deepClone(upro.getFtpUploadConf());
 		up.setServerPath(up.getServerPath() + ftfile.getName());
 		FtpDownloadPro dpro = new FtpDownloadPro(up, upro.getFtpConf(), ftfile);
 		SexftpServerView mv = PluginUtil.findServerView(getWorkbenchPage());
@@ -723,10 +721,13 @@ public class SexftpLocalView extends SexftpMainView {
 					canFtpUploadConf.setExcludes(ftpUploadConf.getExcludes());
 					canFtpUploadConf.setIncludes(ftpUploadConf.getIncludes());
 
-					if ((!StringUtil.fileStyleEIMatch(subfile.getAbsolutePath(), ftpUploadConf.getExcludes(),
-							ftpUploadConf.getIncludes()))
-							|| (existFtpuploadPro(p, canFtpUploadConf.getClientPath()) != null))
+					boolean match = StringUtil.fileStyleEIMatch(
+							subfile.getAbsolutePath(), 
+							ftpUploadConf.getExcludes(),
+							ftpUploadConf.getIncludes());
+					if (!match || (existFtpuploadPro(p, canFtpUploadConf.getClientPath()) != null)) {
 						continue;
+					}
 					AbstractSexftpView.TreeObject newP = new AbstractSexftpView.TreeObject(getFileInfo(subfile),
 							new FtpUploadPro(canFtpUploadConf, ftpConf));
 					p.addChild(newP);

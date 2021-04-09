@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Sexftp
 Bundle-SymbolicName: sexftp;singleton:=true
-Bundle-Version: 2017.1.9
+Bundle-Version: 2017.1.11
 Bundle-ClassPath: lib/desy_commons-1.0.1.jar,
  lib/desy_xbean-1.0.1.jar,
  lib/jsch-0.1.45.jar,
@@ -31,7 +31,6 @@ Export-Package: org.sexftp.core,
  sexftp.editors.inner,
  sexftp.editors.viewlis,
  sexftp.handlers,
- sexftp.icons,
  sexftp.install,
  sexftp.mainbar.actions,
  sexftp.perspective,

@@ -64,8 +64,9 @@ public class FtpUploader {
 		if (!wkdirFile.exists())
 			wkdirFile.mkdirs();
 
-		String xmlconf = FileUtil.getTextFromFile(coffilepath, "utf-8");
-		FtpConf conf = (FtpConf) XbeanUtil.xml2Bean(FtpConf.class, xmlconf);
+		//String xmlconf = FileUtil.getTextFromFile(coffilepath, "utf-8");
+		//FtpConf conf = (FtpConf) XbeanUtil.xml2Bean(FtpConf.class, xmlconf);
+		FtpConf conf = FtpConf.xml2Bean(coffilepath);
 
 		List<FtpUploadConf> expandFtpUploadConfList = new ArrayList<FtpUploadConf>();
 		for (FtpUploadConf ftpUploadConf : conf.getFtpUploadConfList()) {
@@ -148,7 +149,8 @@ public class FtpUploader {
 		System.out.println("Finished!");
 		ftp.disconnect();
 
-		conf = (FtpConf) XbeanUtil.xml2Bean(FtpConf.class, xmlconf);
+		//conf = (FtpConf) XbeanUtil.xml2Bean(FtpConf.class, xmlconf);
+		conf = FtpConf.xml2Bean(coffilepath);
 		expandFtpUploadConfList = new ArrayList<FtpUploadConf>();
 		for (FtpUploadConf ftpUploadConf : conf.getFtpUploadConfList()) {
 			expandFtpUploadConfList.addAll(expandFtpUploadConf(ftpUploadConf));

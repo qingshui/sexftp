@@ -181,7 +181,7 @@ public class SexftpMainView extends AbstractSexftpView {
 			ftpUploadConfList.add(ftpUploadConf);
 		}
 		ftpConf.setFtpUploadConfList(ftpUploadConfList);
-		String bean2xml = XbeanUtil.bean2xml(ftpConf, null);
+		String bean2xml = ftpConf.toXML(); //XbeanUtil.bean2xml(ftpConf, null);
 		bean2xml = StringUtil.replaceAll(bean2xml, "<fileMd5></fileMd5>", "");
 
 		bean2xml = StringUtil.replaceAll(bean2xml, "</serverType>",
@@ -213,8 +213,9 @@ public class SexftpMainView extends AbstractSexftpView {
 
 			public void dosave() {
 				try {
-					String xmlconf = FileUtil.getTextFromFile(confFile.getAbsolutePath(), "utf-8");
-					FtpConf conf = (FtpConf) XbeanUtil.xml2Bean(FtpConf.class, xmlconf);
+//					String xmlconf = FileUtil.getTextFromFile(confFile.getAbsolutePath(), "utf-8");
+//					FtpConf conf = (FtpConf) XbeanUtil.xml2Bean(FtpConf.class, xmlconf);
+					FtpConf conf = FtpConf.xml2Bean(confFile.getAbsolutePath());
 					SexftpMainView.this.checkSexFtpConfigFils(conf);
 					
 					if ( this.oldFile != null ) {
@@ -334,9 +335,9 @@ public class SexftpMainView extends AbstractSexftpView {
 			xmlEditor.setDoSaveListener(new IDoSaveListener() {
 				public void dosave() {
 					try {
-						String xmlconf = FileUtil.getTextFromFile(confPathInProject, "utf-8");
-						FtpConf conf = (FtpConf) XbeanUtil.xml2Bean(FtpConf.class, xmlconf);
-
+//						String xmlconf = FileUtil.getTextFromFile(confPathInProject, "utf-8");
+//						FtpConf conf = (FtpConf) XbeanUtil.xml2Bean(FtpConf.class, xmlconf);
+						FtpConf conf = FtpConf.xml2Bean(confPathInProject);
 						SexftpMainView.this.checkSexFtpConfigFils(conf);
 
 						File oldFile = new File(path);
@@ -908,8 +909,7 @@ public class SexftpMainView extends AbstractSexftpView {
 	}
 
 	public FtpUploadPro downPro2UpPro(FtpDownloadPro dpro) {
-		FtpUploadConf ftpUploadConf = dpro.getFtpUploadConf();
-		ftpUploadConf = (FtpUploadConf) StringUtil.deepClone(ftpUploadConf);
+		FtpUploadConf ftpUploadConf = (FtpUploadConf) StringUtil.deepClone(dpro.getFtpUploadConf());
 		String clientPath = dpro.getFtpUploadConf().getClientPath() + "/"
 				+ new File(dpro.getFtpUploadConf().getServerPath()).getName();
 		ftpUploadConf.setClientPath(new File(clientPath).getAbsolutePath());

@@ -53,14 +53,14 @@ public class FtpUtil {
 		});
 		Arrays.sort(confFiles);
 		for (File file : confFiles) {
-			String xmlconf = FileUtil.getTextFromFile(file.getAbsolutePath(), "utf-8");
-			FtpConf conf = null;
-			try {
-				conf = (FtpConf) XbeanUtil.xml2Bean(FtpConf.class, xmlconf);
-			} catch (Exception e) {
-				conf = new FtpConf();
-				conf.setHost("Load Config File Error :" + e.getMessage());
-			}
+//			String xmlconf = FileUtil.getTextFromFile(file.getAbsolutePath(), "utf-8");
+			FtpConf conf = FtpConf.xml2Bean(file.getAbsolutePath());
+//			try {
+//				conf = (FtpConf) XbeanUtil.xml2Bean(FtpConf.class, xmlconf);
+//			} catch (Exception e) {
+//				conf = new FtpConf();
+//				conf.setHost("Load Config File Error :" + e.getMessage());
+//			}
 			conf.setName(file.getName());
 			ftpConfList.add(conf);
 		}
@@ -91,8 +91,9 @@ public class FtpUtil {
 		String wkdir = workBaseDir + "/" + new File(configFilePath).getName();
 		initWkDir(workBaseDir, configFilePath);
 
-		String xmlconf = FileUtil.getTextFromFile(configFilePath, "utf-8");
-		FtpConf conf = (FtpConf) XbeanUtil.xml2Bean(FtpConf.class, xmlconf);
+//		String xmlconf = FileUtil.getTextFromFile(configFilePath, "utf-8");
+//		FtpConf conf = (FtpConf) XbeanUtil.xml2Bean(FtpConf.class, xmlconf);
+		FtpConf conf = FtpConf.xml2Bean(configFilePath);
 		List<FtpUploadConf> expandFtpUploadConfList = expandFtpUploadConf(conf, null);
 		Map<String, String> lastModMap = new HashMap<String, String>();
 		for (FtpUploadConf expandFtpUploadConf : (ArrayList<FtpUploadConf>) expandFtpUploadConfList) {
@@ -107,8 +108,9 @@ public class FtpUtil {
 		String wkdir = workBaseDir + "/" + new File(configFilePath).getName();
 		initWkDir(workBaseDir, configFilePath);
 
-		String xmlconf = FileUtil.getTextFromFile(configFilePath, "utf-8");
-		FtpConf conf = (FtpConf) XbeanUtil.xml2Bean(FtpConf.class, xmlconf);
+//		String xmlconf = FileUtil.getTextFromFile(configFilePath, "utf-8");
+//		FtpConf conf = (FtpConf) XbeanUtil.xml2Bean(FtpConf.class, xmlconf);
+		FtpConf conf = FtpConf.xml2Bean(configFilePath);
 		Map<String, String> lastModMap = null;
 		try {
 			lastModMap = readLastModMap(wkdir);

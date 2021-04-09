@@ -400,4 +400,17 @@ Prepare All Files For Upload</enus>
     <enus>[%s] Not Exists On Server!</enus>
     <zhcn></zhcn>
   </languageItem>
+  <languageItem>
+    <key>Upload To Server</key>
+    <enus>Upload To Server</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <key>Name [%s] Invalid! (%s)</key>
+    <enus>Name [%s] Invalid! (%s)</enus>
+    <zhcn></zhcn>
+  </languageItem>
+  <languageItem>
+    <zhcn></zhcn>
+  </languageItem>
 </org.sexftp.core.bean.LanguageConf>

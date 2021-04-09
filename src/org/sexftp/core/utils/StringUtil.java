@@ -1,7 +1,11 @@
 package org.sexftp.core.utils;
 
-import com.thoughtworks.xstream.XStream;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
@@ -13,7 +17,6 @@ import java.util.regex.Pattern;
 public class StringUtil {
 	public static final char[] REGKEYS = { '\\', '^', '{', '}', '[', ']', '-', '+', '$', '*', '?', '.' };
 	public static final String FILE_STYLE_MF = "d79d6a9cd10a4c5cb523b00fea9dda7f";
-	static XStream xStream = new XStream();
 
 	public static String getHumanSize(long size) {
 		float s = 0.0F;
@@ -112,7 +115,6 @@ public class StringUtil {
 			} else {
 				isInclude = fileStyleMatch(str, includes);
 			}
-
 		} else {
 			isInclude = true;
 		}
@@ -120,20 +122,24 @@ public class StringUtil {
 	}
 
 	public static boolean fileStyleMatch(String str, String matchstr) {
+		// 后缀完成匹配，直接过滤掉
+		if ( str.endsWith(matchstr) ) {
+			return true;
+		}
+		
 		str = str.replace('\\', '/').toLowerCase();
 		matchstr = matchstr.replace('\\', '/').toLowerCase();
 		try {
 			String s = matchstr;
-
 			for (int i = 0; i < REGKEYS.length; ++i) {
 				String sregKey = REGKEYS[i] + "";
 				String temp = String.format("%s%2d",
-						new Object[] { "d79d6a9cd10a4c5cb523b00fea9dda7f", Integer.valueOf(i) });
+						new Object[] { FILE_STYLE_MF, Integer.valueOf(i) });
 				s = replaceAll(s, sregKey, temp);
 			}
 			for (int i = 0; i < REGKEYS.length; ++i) {
 				String newRK = String.format("%s%2d",
-						new Object[] { "d79d6a9cd10a4c5cb523b00fea9dda7f", Integer.valueOf(i) });
+						new Object[] { FILE_STYLE_MF, Integer.valueOf(i) });
 				char regKey = REGKEYS[i];
 
 				switch (regKey) {
@@ -154,9 +160,8 @@ public class StringUtil {
 				}
 
 			}
-
 			s = "^" + s + "$";
-
+			
 			Pattern p = Pattern.compile(s);
 
 			Matcher matcher = p.matcher(str);
@@ -176,7 +181,22 @@ public class StringUtil {
 		return str;
 	}
 
-	public static Object deepClone(Object o) {
-		return xStream.fromXML(xStream.toXML(o));
+	public static Object deepClone(Object from) {
+		Object obj = null;
+        try {
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            ObjectOutputStream out = new ObjectOutputStream(bos);
+            out.writeObject(from);
+            out.flush();
+            out.close();
+            ObjectInputStream in = new ObjectInputStream(
+                    new ByteArrayInputStream(bos.toByteArray()));
+            obj = in.readObject();
+        } catch(IOException e) {
+            e.printStackTrace();
+        } catch(ClassNotFoundException e2) {
+            e2.printStackTrace();
+        }
+        return obj;
 	}
 }

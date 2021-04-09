@@ -5,13 +5,22 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.desy.textparse.SmartText;
 import org.desy.textparse.context.SmartTextContext;
 import org.desy.textparse.exceptions.FunExecuteException;
 import org.desy.textparse.exceptions.FunParseException;
 import org.desy.textparse.funexecutors.AbstractFunParamActiveExeutor;
 import org.desy.textparse.interfaces.FunParseable;
+import org.sexftp.core.ftp.bean.FtpUploadConf;
 import org.sexftp.core.utils.StringUtil;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 import sexftp.uils.PluginUtil;
 
 public class LanguageConf {
@@ -140,5 +149,47 @@ public class LanguageConf {
 		public String[] getParams() {
 			return (String[]) this.params.toArray(new String[0]);
 		}
+	}
+	public void parseConf(NodeList childList) {
+		this.langList = new ArrayList<LanguageItem>();
+        for (int i = 0; i < childList.getLength(); ++i) {
+        	Node node = childList.item(i);
+        	if (node.getNodeType() != Node.ELEMENT_NODE) {
+        		continue;
+        	}
+        	String name = node.getNodeName();
+        	String value = node.getTextContent();
+        	if (name == "defaultLang") {
+        		this.defaultLang = value;
+        	} else if (name == "languageItem") {
+        		this.langList.add(LanguageItem.fromXML(node.getChildNodes()));
+        	}
+//        	System.out.println("name:" + name + ",value:" + value);
+        }
+	}
+	public static LanguageConf fromXML(String xmlfile) {
+		LanguageConf conf = null;
+		//1.创建DocumentBuilderFactory对象
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        //2.创建DocumentBuilder对象
+        try {
+        	conf = new LanguageConf();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+//            System.out.println(xmlfile);
+            Document d = builder.parse(xmlfile);
+            conf.parseConf(d.getElementsByTagName("org.sexftp.core.bean.LanguageConf").item(0).getChildNodes());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return conf;
+	}
+	public String toXML() {
+		String xml = "<org.sexftp.core.bean.LanguageConf>\r\n";
+		xml += "\t<defaultLang>" + this.defaultLang + "</defaultLang>\r\n";
+		for (LanguageItem item : this.langList) {
+			xml += item.toXML();
+		}
+		xml += "</org.sexftp.core.bean.LanguageConf>\r\n";
+		return xml;
 	}
 }
